@@ -32,5 +32,7 @@ req2 <- function()
     
     # find interval with this max
     steps_by_interval[max_steps_row, ]
+    
+    print(paste("interval:", steps_by_interval[max_steps_row, 1]))
   }
 }

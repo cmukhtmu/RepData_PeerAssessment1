@@ -22,7 +22,8 @@ req3 <- function()
     print("CSV file read successfully!")
     # print(head(activity))
     
-    print(sum(is.na(activity)))
+    total_missing_values = sum(is.na(activity$steps))
+    print(total_missing_values)
     steps_by_interval <- aggregate(steps ~ interval, activity, mean)
     by_day <- group_by(activity, date)
     steps_by_day <- summarise(by_day, total = sum(steps))
@@ -39,8 +40,8 @@ req3 <- function()
     df_imputed_steps_by_day <- aggregate(steps ~ date, data_imputed, sum)
     print(head(df_imputed_steps_by_day))
     
-    hist(df_imputed_steps_by_day$steps, main="Histogram of total number of steps per day (imputed)", 
-         xlab="Total number of steps in a day")
+    hist(df_imputed_steps_by_day$steps, main="Histogram of total steps per day (imputed)", 
+         xlab="Total steps in a day")
     
     print(mean(df_imputed_steps_by_day$steps))
     print(median(df_imputed_steps_by_day$steps))
